@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Início</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+
+  <style>
+    .caixa-translucida {
+      background-color: rgba(255, 255, 255, 0.582);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 15px;
+    }
+    .texto-preto {
+      color: #000;
+    }
+    .titulo-grande {
+      font-size: 2.0rem;
+      font-weight: bold;
+    }
+    .titulo-estiloso {
+      font-family: 'Bungee Spice', sans-serif;
+    }
+  </style>
+</head>
+<body style="background-image: url('/imagens/primeirapag.png'); background-size: cover; background-position: center;" class="d-flex justify-content-center align-items-center vh-100">
+  <audio autoplay loop>
+    <source src="audios/musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta o elemento audio.
+  </audio>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 caixa-translucida">
+        <h1 class="text-center titulo-grande titulo-estiloso">
+          Parece que um coelho sapeca passou por aqui... 🐰🎁
+        </h1>
+        <div class="text-center mt-4">
+          <button class="btn btn-success w-100" onclick="start()">Começar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function start() {
+      localStorage.setItem("vidas", "3");
+      window.location.href = "pagina1.html";
+    }
+  </script>
+</body>
+</html>

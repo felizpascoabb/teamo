@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página 4</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Animação do papel desamassando */
+    @keyframes desamassar {
+      0% {
+        transform: scale(0.2) rotate(-30deg);
+        opacity: 0;
+        filter: blur(10px);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    #papel, #papel2 {
+      z-index: 9999;
+    }
+
+    .papel-anima {
+      animation: desamassar 0.8s ease-out;
+      max-width: 90vw;
+    }
+
+    .caixa-translucida {
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body style="background-image: url('imagens/bbnochuveiro.jpg'); background-size: cover; background-position: center;" class="d-flex justify-content-center align-items-center vh-100 flex-column">
+
+  <!-- Mensagem automática -->
+  <div id="papel" class="position-fixed top-50 start-50 translate-middle">
+    <div class="papel-anima bg-white p-4 rounded shadow text-center">
+      <h4>MAAAARCHAAAAAA
+        🎉🎉🌟🌟❤️‍🔥🫦🫦🍌🍆
+      </h4>
+      <p></p>
+      <button class="btn btn-secondary mt-2" onclick="fecharPapel()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Caixa da pergunta -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 shadow caixa-translucida">
+        <h2 class="text-center">DICA TRES LETRAS</h2>
+        <input type="text" id="resposta" class="form-control mt-3 w-100" placeholder="Digite sua resposta">
+        <button class="btn btn-primary mt-3 w-100" onclick="verificarResposta()">Próximo</button>
+        <button class="btn btn-warning mt-3 w-100" onclick="mostrarPapel2()">💩💩💩💩💩💩💩💩💩💩</button>
+        <p id="mensagem" class="text-danger mt-2 text-center"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de progresso -->
+  <progress id="progress-bar" value="0" max="100" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 20px;"></progress>
+
+  <!-- Mensagem secreta do botão 💩 -->
+  <div id="papel2" class="position-fixed top-50 start-50 translate-middle d-none">
+    <div class="papel-anima bg-white p-4 rounded shadow text-center">
+      <h4>Outra dica escondida...</h4>
+      <p>PARA ENTENDER MELHOR AS COISAS O COELHO QUER SABER, O QUE NUNCA DIZER PRO ARTHUR QUANDO ELE FALAR "AMOR DA MINHA VIDA"? 👃💭</p>
+      <button class="btn btn-secondary mt-2" onclick="fecharPapel2()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    let totalPerguntas = 10;
+    let perguntaAtual = 4;
+
+    let progresso = (perguntaAtual - 1) * (100 / totalPerguntas);
+    document.getElementById("progress-bar").value = progresso;
+
+    function verificarResposta() {
+      let resposta = document.getElementById('resposta').value.trim().toLowerCase();
+      let vidas = parseInt(localStorage.getItem("vidas") || "3");
+      if (resposta === "ouo") {
+        window.location.href = "pagina5.html";
+      } else {
+        vidas -= 1;
+        localStorage.setItem("vidas", vidas);
+        if (vidas <= 0) {
+          window.location.href = "gameover.html";
+        } else {
+          document.getElementById("mensagem").textContent = "Incorreto! Vidas restantes: " + vidas;
+        }
+      }
+    }
+
+    function fecharPapel() {
+      document.getElementById("papel").classList.add("d-none");
+    }
+
+    function mostrarPapel2() {
+      document.getElementById("papel2").classList.remove("d-none");
+    }
+
+    function fecharPapel2() {
+      document.getElementById("papel2").classList.add("d-none");
+    }
+  </script>
+
+</body>
+</html>

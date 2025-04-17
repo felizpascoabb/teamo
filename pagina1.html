@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página 1</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url('/imagens/segundapag.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .caixa-translucida {
+      background-color: rgba(255, 255, 255, 0.582);
+      border-radius: 15px;
+    }
+
+    .texto-colorido {
+      color: #000000;
+    }
+
+    .titulo-estiloso {
+      font-family: 'Bungee Spice', sans-serif;
+    }
+
+    /* Animação de papel desamassando */
+    @keyframes desamassar {
+      0% {
+        transform: scale(0.2) rotate(-30deg);
+        opacity: 0;
+        filter: blur(10px);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    #papel {
+      z-index: 9999;
+    }
+
+    .papel-anima {
+      animation: desamassar 0.8s ease-out;
+      max-width: 90vw;
+    }
+  </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+  <audio autoplay loop>
+    <source src="audios/musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta o elemento audio.
+  </audio>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 caixa-translucida text-center">
+        <h1 class="titulo-estiloso">ele escondeu alguns presentes, e VOCEEEEE deusa do mundo e seu mlr migo monstrengo shev vão ter que achar 🫦🫦🪄🌟🌠🎁🐇</h1>
+        
+        <div class="mt-4">
+          <button class="btn btn-warning w-100 mb-3" onclick="mostrarPapel()">📜 Revelar papel</button>
+          <button class="btn btn-primary w-100" onclick="proxima()">
+            <h1 class="titulo-estiloso">LEEEEETS, GO?</h1>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Papel com Mensagem -->
+  <div id="papel" class="position-fixed top-50 start-50 translate-middle d-none">
+    <div class="papel-anima bg-white p-4 rounded shadow text-center">
+      <h4>Mensagem secreta revelada!</h4>
+      <p>ELE ESCONDEU ALGUMAS PISTAS E AGR A BB DEUSA E MONSTRENGO NIGGAR VAO TER QUE DESVENDAR AS XARADAS 🕵️‍♂️✨</p>
+      <button class="btn btn-secondary mt-2" onclick="fecharPapel()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    function proxima() {
+      window.location.href = "pagina2.html";
+    }
+
+    function mostrarPapel() {
+      document.getElementById("papel").classList.remove("d-none");
+    }
+
+    function fecharPapel() {
+      document.getElementById("papel").classList.add("d-none");
+    }
+  </script>
+</body>
+</html>
